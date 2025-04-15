@@ -1,0 +1,998 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>新宿givers | スポンサー</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --turquoise: #40E0D0;
+            --gold: #FFD700;
+            --dark: #333;
+            --light: #f8f9fa;
+            --gradient: linear-gradient(135deg, #40E0D0, #20B2AA);
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: var(--light);
+            color: var(--dark);
+            line-height: 1.6;
+        }
+        
+        .logo-image {
+            height: 40px; /* ロゴの高さを調整 */
+            width: auto; /* 幅は自動調整 */
+            display: block;
+        }
+        
+        /* ナビゲーション */
+        .navbar {
+            background-color: rgba(255, 255, 255, 0.95);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            padding: 15px 0;
+            transition: all 0.3s ease;
+        }
+        
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+        
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 2rem;
+            font-weight: bold;
+            color: var(--turquoise);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo span {
+            color: var(--gold);
+        }
+        
+        .nav-menu {
+            display: flex;
+            list-style: none;
+        }
+        
+        .nav-item {
+            margin: 0 15px;
+        }
+        
+        .nav-link {
+            color: var(--dark);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+            position: relative;
+            padding: 5px 0;
+        }
+        
+        .nav-link:after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: 0;
+            left: 0;
+            background-color: var(--turquoise);
+            transition: width 0.3s ease;
+        }
+        
+        .nav-link:hover {
+            color: var(--turquoise);
+        }
+        
+        .nav-link:hover:after {
+            width: 100%;
+        }
+        
+        .hamburger {
+            display: none;
+            cursor: pointer;
+        }
+        
+        /* ページヘッダー */
+        .page-header {
+            background: var(--gradient);
+            color: white;
+            text-align: center;
+            padding: 120px 0 60px;
+        }
+        
+        .page-title {
+            font-size: 3rem;
+            margin-bottom: 20px;
+        }
+        
+        .page-subtitle {
+            font-size: 1.2rem;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        /* セクション共通スタイル */
+        section {
+            padding: 80px 0;
+        }
+        
+        .section-heading {
+            text-align: center;
+            margin-bottom: 50px;
+            position: relative;
+        }
+        
+        .section-title {
+            font-size: 2.5rem;
+            color: var(--dark);
+            margin-bottom: 15px;
+            position: relative;
+            display: inline-block;
+        }
+        
+        .section-title:after {
+            content: '';
+            position: absolute;
+            width: 50%;
+            height: 3px;
+            background: var(--gradient);
+            bottom: -5px;
+            left: 25%;
+        }
+        
+        .section-subtitle {
+            font-size: 1.2rem;
+            color: #777;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        /* スポンサーセクション */
+        .sponsors {
+            background-color: white;
+        }
+        
+        .sponsors-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 30px;
+            margin-bottom: 50px;
+        }
+        
+        .sponsor-card {
+            background-color: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease;
+            text-align: center;
+            padding: 30px;
+        }
+        
+        .sponsor-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        }
+        
+        .sponsor-logo {
+            width: 150px;
+            height: 150px;
+            object-fit: contain;
+            margin: 0 auto 20px;
+            border-radius: 5px;
+        }
+        
+        .sponsor-name {
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+            color: var(--turquoise);
+        }
+        
+        .sponsor-type {
+            display: inline-block;
+            background-color: var(--gold);
+            color: var(--dark);
+            padding: 5px 15px;
+            border-radius: 30px;
+            font-weight: bold;
+            font-size: 0.9rem;
+            margin-bottom: 15px;
+        }
+        
+        .sponsor-description {
+            color: #666;
+        }
+        
+        /* スポンサープランセクション */
+        .sponsor-plans {
+            background-color: #f0f9fa;
+        }
+        
+        .plans-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .plan-card {
+            background-color: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease;
+        }
+        
+        .plan-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        }
+        
+        .plan-header {
+            background: var(--gradient);
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+        
+        .plan-title {
+            font-size: 1.8rem;
+            margin-bottom: 10px;
+        }
+        
+        .plan-price {
+            font-size: 2.5rem;
+            font-weight: bold;
+        }
+        
+        .plan-period {
+            font-size: 1rem;
+            opacity: 0.8;
+        }
+        
+        .plan-body {
+            padding: 30px;
+        }
+        
+        .plan-features {
+            list-style: none;
+            margin-bottom: 30px;
+        }
+        
+        .plan-feature {
+            margin-bottom: 15px;
+            display: flex;
+            align-items: flex-start;
+        }
+        
+        .plan-feature i {
+            color: var(--turquoise);
+            margin-right: 10px;
+            margin-top: 5px;
+        }
+        
+        .plan-cta {
+            text-align: center;
+        }
+        
+        .plan-btn {
+            background: var(--gradient);
+            color: white;
+            padding: 12px 25px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: bold;
+            display: inline-block;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        .plan-btn:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(64, 224, 208, 0.3);
+        }
+        
+        .premium-plan {
+            transform: scale(1.05);
+        }
+        
+        .premium-plan .plan-header {
+            background: linear-gradient(135deg, var(--gold), #FFA500);
+        }
+        
+        .premium-plan .plan-feature i {
+            color: var(--gold);
+        }
+        
+        .premium-plan .plan-btn {
+            background: linear-gradient(135deg, var(--gold), #FFA500);
+        }
+        
+        .premium-plan .plan-btn:hover {
+            box-shadow: 0 10px 20px rgba(255, 215, 0, 0.3);
+        }
+        
+        /* コンタクトセクション */
+        .contact {
+            background-color: white;
+        }
+        
+        .contact-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+        }
+        
+        .contact-info {
+            padding: 20px;
+        }
+        
+        .contact-title {
+            font-size: 1.8rem;
+            color: var(--turquoise);
+            margin-bottom: 20px;
+        }
+        
+        .contact-details {
+            list-style: none;
+            margin-bottom: 30px;
+        }
+        
+        .contact-item {
+            margin-bottom: 15px;
+            display: flex;
+            align-items: flex-start;
+        }
+        
+        .contact-item i {
+            color: var(--turquoise);
+            margin-right: 15px;
+            margin-top: 5px;
+            width: 20px;
+            text-align: center;
+        }
+        
+        .contact-item span {
+            color: #666;
+        }
+        
+        .contact-form-container {
+            background-color: #f8f9fa;
+            padding: 30px;
+            border-radius: 10px;
+        }
+        
+        .form-title {
+            font-size: 1.8rem;
+            color: var(--turquoise);
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        
+        .form-subtitle {
+            text-align: center;
+            margin-bottom: 30px;
+            color: #666;
+        }
+        
+        .google-form {
+            width: 100%;
+            height: 600px;
+            border: none;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+        
+        /* フッター */
+        footer {
+            background-color: var(--dark);
+            color: white;
+            padding: 60px 0 30px;
+        }
+        
+        .footer-logo-image {
+            height: 35px; /* フッターロゴの高さを調整 */
+            width: auto;
+            display: block;
+            filter: brightness(0) invert(1); /* 白色ロゴに変換（必要に応じて） */
+        }
+        
+        .footer-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+        }
+        
+        .footer-logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: var(--turquoise);
+            margin-bottom: 20px;
+            display: inline-block;
+        }
+        
+        .footer-logo span {
+            color: var(--gold);
+        }
+        
+        .footer-text {
+            margin-bottom: 20px;
+            color: #bbb;
+        }
+        
+        .footer-column h3 {
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+            position: relative;
+            padding-bottom: 10px;
+        }
+        
+        .footer-column h3:after {
+            content: '';
+            position: absolute;
+            width: 40px;
+            height: 3px;
+            background: var(--turquoise);
+            bottom: 0;
+            left: 0;
+        }
+        
+        .footer-links {
+            list-style: none;
+        }
+        
+        .footer-link {
+            margin-bottom: 15px;
+        }
+        
+        .footer-link a {
+            color: #bbb;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        
+        .footer-link a:hover {
+            color: var(--turquoise);
+        }
+        
+        .footer-social {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        
+        .footer-social a {
+            color: white;
+            background-color: rgba(255, 255, 255, 0.1);
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+        
+        .footer-social a:hover {
+            background-color: var(--turquoise);
+            transform: translateY(-5px);
+        }
+        
+        .footer-bottom {
+            text-align: center;
+            padding-top: 30px;
+            margin-top: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: #999;
+        }
+        
+        /* レスポンシブデザイン */
+        @media (max-width: 991px) {
+            .page-title {
+                font-size: 2.5rem;
+            }
+            
+            .premium-plan {
+                transform: scale(1);
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .nav-menu {
+                position: fixed;
+                top: 80px;
+                right: -100%;
+                background-color: white;
+                flex-direction: column;
+                width: 80%;
+                height: calc(100vh - 80px);
+                transition: all 0.5s ease;
+                box-shadow: -5px 0 15px rgba(0, 0, 0, 0.1);
+                padding: 20px 0;
+                align-items: center;
+            }
+            
+            .nav-menu.active {
+                right: 0;
+            }
+            
+            .nav-item {
+                margin: 15px 0;
+            }
+            
+            .hamburger {
+                display: block;
+                font-size: 1.8rem;
+                color: var(--turquoise);
+            }
+            
+            .section-title {
+                font-size: 2rem;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .page-title {
+                font-size: 2rem;
+            }
+            
+            .section-title {
+                font-size: 1.8rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- ナビゲーション -->
+    <header class="navbar">
+        <div class="container nav-container">
+            <a href="index.html" class="logo">
+                <img src="img/SHINJYUKUgivers_textlogoA_ck.png" alt="新宿givers" class="logo-image">
+            </a>
+            <ul class="nav-menu">
+                <li class="nav-item"><a href="index.html" class="nav-link">ホーム</a></li>
+                <li class="nav-item"><a href="members.html" class="nav-link">メンバー</a></li>
+                <li class="nav-item"><a href="schedule.html" class="nav-link">スケジュール</a></li>
+                <li class="nav-item"><a href="sponsors.html" class="nav-link">スポンサー</a></li>
+            </ul>
+            <div class="hamburger">
+                <i class="fas fa-bars"></i>
+            </div>
+        </div>
+    </header>
+    
+    <!-- ページヘッダー -->
+    <section class="page-header">
+        <div class="container">
+            <h1 class="page-title">スポンサー</h1>
+            <p class="page-subtitle">新宿giversを支援してくださるスポンサー企業の皆様</p>
+        </div>
+    </section>
+    
+    <!-- スポンサーセクション -->
+    <section class="sponsors">
+        <div class="container">
+            <div class="section-heading">
+                <h2 class="section-title">オフィシャルスポンサー</h2>
+                <p class="section-subtitle">新宿giversの活動を支援してくださっている企業様をご紹介します</p>
+            </div>
+            <div class="sponsors-grid">
+                <div class="sponsor-card">
+                    <img src="img/sponsor-placeholder1.jpg" alt="スポンサーロゴ" class="sponsor-logo">
+                    <h3 class="sponsor-name">株式会社サンプル</h3>
+                    <div class="sponsor-type">プラチナスポンサー</div>
+                    <p class="sponsor-description">スポンサー企業の簡単な説明文がここに入ります。詳細は企業様のウェブサイトをご覧ください。</p>
+                </div>
+                
+                <div class="sponsor-card">
+                    <img src="img/sponsor-placeholder2.jpg" alt="スポンサーロゴ" class="sponsor-logo">
+                    <h3 class="sponsor-name">サンプル商事</h3>
+                    <div class="sponsor-type">ゴールドスポンサー</div>
+                    <p class="sponsor-description">スポンサー企業の簡単な説明文がここに入ります。詳細は企業様のウェブサイトをご覧ください。</p>
+                </div>
+                
+                <div class="sponsor-card">
+                    <img src="img/sponsor-placeholder3.jpg" alt="スポンサーロゴ" class="sponsor-logo">
+                    <h3 class="sponsor-name">サンプルテクノロジー</h3>
+                    <div class="sponsor-type">シルバースポンサー</div>
+                    <p class="sponsor-description">スポンサー企業の簡単な説明文がここに入ります。詳細は企業様のウェブサイトをご覧ください。</p>
+                </div>
+                
+                <div class="sponsor-card">
+                    <img src="img/sponsor-placeholder4.jpg" alt="スポンサーロゴ" class="sponsor-logo">
+                    <h3 class="sponsor-name">株式会社サンプルデザイン</h3>
+                    <div class="sponsor-type">シルバースポンサー</div>
+                    <p class="sponsor-description">スポンサー企業の簡単な説明文がここに入ります。詳細は企業様のウェブサイトをご覧ください。</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- スポンサープランセクション -->
+    <section class="sponsor-plans">
+        <div class="container">
+            <div class="section-heading">
+                <h2 class="section-title">スポンサープラン</h2>
+                <p class="section-subtitle">新宿giversのスポンサーとして、チームの成長と3人制バスケットボールの普及にご協力ください</p>
+            </div>
+            
+            <div class="intro-text" style="margin-bottom: 40px; max-width: 900px; margin-left: auto; margin-right: auto;">
+                <p style="margin-bottom: 15px;">近年5人制プロバスケットボールリーグのB.LEAGUE(男子）W.LEAGUE(女子）や、3人制プロバスケットボールリーグなどバスケットボールに注目が集まってきています。八村選手や河村選手のNBAでの活躍も大きく取り上げられています。</p>
+                
+                <p style="margin-bottom: 15px;">今、日本のバスケットボール界は、バスケットボール普及の大きなウェーブがあります。バスケットボールは誰もが知っているスポーツではありますが、日本ではまだまだプロチームの運営や、選手の環境は厳しい現状もあります。競技人口も高校までは非常に多いものの、大学、社会人となると減ってしまうので、バスケットボールを広めることが大切だと考えます。</p>
+                
+                <p style="margin-bottom: 15px;">バスケットボールが広がればアメリカやフィリピンのように、国を代表するスポーツになりマーケットの広がりに期待できます。また競技レベルも上昇し海外にチャレンジ、そして海外で活躍する選手も増え、再びオリンピックに自力で出場する事も、夢ではなく目標になるでしょう。</p>
+                
+                <p style="margin-bottom: 15px;">新宿GIVERSではチームで3人制プロバスケットボールリーグに参入し、3人制バスケットボール界を盛り上げます。ここから2028年のロスオリンピック選手の輩出を目標としています。当チームの強化におけるスポンサー資金をお願いしています。ここがチームスタートの第一歩です、ご協賛宜しくお願い致します。</p>
+                
+                <div style="margin-top: 30px; border-left: 4px solid var(--turquoise); padding-left: 20px;">
+                    <h3 style="color: var(--turquoise); margin-bottom: 10px; font-size: 1.4rem;">チーム概要</h3>
+                    <p><strong>チーム名:</strong> 新宿GIVERS</p>
+                    <p><strong>設立目的:</strong> 三人制バスケットボールの強化・普及と、女性アスリートの活躍を目的としたプロフェッショナルチームを立ち上げます。</p>
+                    <p><strong>ビジョン:</strong> チーム名「GIVERS」の名の通り、人に与え、仲間に尽くす、献身的なチームワークの心で、地域貢献とスポーツの振興を目指します。</p>
+                </div>
+                
+                <div style="margin-top: 20px; border-left: 4px solid var(--gold); padding-left: 20px;">
+                    <h3 style="color: var(--gold); margin-bottom: 10px; font-size: 1.4rem;">三人制バスケットボールの魅力</h3>
+                    <p>三人制バスケットボールはスピード感と戦略が求められ、観客を魅了します。国際大会の増加し世界的な人気が高まっており、東京オリンピックでも注目されました。</p>
+                </div>
+                
+                <div style="margin-top: 20px; border-left: 4px solid var(--turquoise); padding-left: 20px; margin-bottom: 30px;">
+                    <h3 style="color: var(--turquoise); margin-bottom: 10px; font-size: 1.4rem;">スポンサーシップのメリット</h3>
+                    <ul style="list-style-type: none; padding-left: 0;">
+                        <li style="margin-bottom: 8px;">・ ユニフォームへの企業様のロゴ掲載や、SNSでの紹介で協賛企業様の認知度を上げます</li>
+                        <li style="margin-bottom: 8px;">・ チームと企業のコラボレーションを展開していきます</li>
+                        <li style="margin-bottom: 8px;">・ スポンサー企業の社員や関係者を試合に招待し、特別席を提供します</li>
+                        <li style="margin-bottom: 8px;">・ 協賛企業に対して、シーズン終了後にチームの活動報告書を提供します</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div style="overflow-x: auto; margin-bottom: 50px;">
+                <table style="width: 100%; border-collapse: collapse; text-align: center; margin-bottom: 30px;">
+                    <thead>
+                        <tr>
+                            <th style="padding: 15px; background-color: var(--light); border: 1px solid #ddd;">協賛種類</th>
+                            <th style="padding: 15px; background-color: #FFD700; border: 1px solid #ddd; color: #333;">GOLD</th>
+                            <th style="padding: 15px; background-color: #C0C0C0; border: 1px solid #ddd; color: #333;">SILVER</th>
+                            <th style="padding: 15px; background-color: #87CEEB; border: 1px solid #ddd; color: #333;">REGULAR</th>
+                            <th style="padding: 15px; background-color: #90EE90; border: 1px solid #ddd; color: #333;">SUPPLIER</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td style="padding: 15px; border: 1px solid #ddd; font-weight: bold;">ご協賛金額</td>
+                            <td style="padding: 15px; border: 1px solid #ddd;">¥1,000,000</td>
+                            <td style="padding: 15px; border: 1px solid #ddd;">¥300,000</td>
+                            <td style="padding: 15px; border: 1px solid #ddd;">¥50,000</td>
+                            <td style="padding: 15px; border: 1px solid #ddd;">商品/サービス提供</td>
+                        </tr>
+                        <tr>
+                            <td style="padding: 15px; border: 1px solid #ddd; font-weight: bold;">対応可能数</td>
+                            <td style="padding: 15px; border: 1px solid #ddd;">1社</td>
+                            <td style="padding: 15px; border: 1px solid #ddd;">4社</td>
+                            <td style="padding: 15px; border: 1px solid #ddd;">制限なし</td>
+                            <td style="padding: 15px; border: 1px solid #ddd;">制限なし</td>
+                        </tr>
+                        <tr>
+                            <td style="padding: 15px; border: 1px solid #ddd; font-weight: bold;">①ユニフォームにロゴ掲載</td>
+                            <td style="padding: 15px; border: 1px solid #ddd;">●（正面）</td>
+                            <td style="padding: 15px; border: 1px solid #ddd;">●（正面肩）</td>
+                            <td style="padding: 15px; border: 1px solid #ddd;">×</td>
+                            <td style="padding: 15px; border: 1px solid #ddd;">×</td>
+                        </tr>
+                        <tr>
+                            <td style="padding: 15px; border: 1px solid #ddd; font-weight: bold;">②チームロゴの使用権</td>
+                            <td style="padding: 15px; border: 1px solid #ddd;">●</td>
+                            <td style="padding: 15px; border: 1px solid #ddd;">●</td>
+                            <td style="padding: 15px; border: 1px solid #ddd;">●</td>
+                            <td style="padding: 15px; border: 1px solid #ddd;">●</td>
+                        </tr>
+                        <tr>
+                            <td style="padding: 15px; border: 1px solid #ddd; font-weight: bold;">③練習試合でのデモや製品のサンプリング</td>
+                            <td style="padding: 15px; border: 1px solid #ddd;">●</td>
+                            <td style="padding: 15px; border: 1px solid #ddd;">●</td>
+                            <td style="padding: 15px; border: 1px solid #ddd;">●</td>
+                            <td style="padding: 15px; border: 1px solid #ddd;">●</td>
+                        </tr>
+                        <tr>
+                            <td style="padding: 15px; border: 1px solid #ddd; font-weight: bold;">④チームSNSでスポンサーロゴ、製品紹介</td>
+                            <td style="padding: 15px; border: 1px solid #ddd;">●</td>
+                            <td style="padding: 15px; border: 1px solid #ddd;">●</td>
+                            <td style="padding: 15px; border: 1px solid #ddd;">●</td>
+                            <td style="padding: 15px; border: 1px solid #ddd;">●</td>
+                        </tr>
+                        <tr>
+                            <td style="padding: 15px; border: 1px solid #ddd; font-weight: bold;">⑤チームフラッグにロゴ掲載</td>
+                            <td style="padding: 15px; border: 1px solid #ddd;">●</td>
+                            <td style="padding: 15px; border: 1px solid #ddd;">×</td>
+                            <td style="padding: 15px; border: 1px solid #ddd;">×</td>
+                            <td style="padding: 15px; border: 1px solid #ddd;">×</td>
+                        </tr>
+                        <tr>
+                            <td style="padding: 15px; border: 1px solid #ddd; font-weight: bold;">⑥チームグッズ無料贈呈</td>
+                            <td style="padding: 15px; border: 1px solid #ddd;">●</td>
+                            <td style="padding: 15px; border: 1px solid #ddd;">●</td>
+                            <td style="padding: 15px; border: 1px solid #ddd;">×</td>
+                            <td style="padding: 15px; border: 1px solid #ddd;">×</td>
+                        </tr>
+                        <tr>
+                            <td style="padding: 15px; border: 1px solid #ddd; font-weight: bold;">⑦練習着のロゴ掲載</td>
+                            <td style="padding: 15px; border: 1px solid #ddd;">●</td>
+                            <td style="padding: 15px; border: 1px solid #ddd;">●</td>
+                            <td style="padding: 15px; border: 1px solid #ddd;">×</td>
+                            <td style="padding: 15px; border: 1px solid #ddd;">×</td>
+                        </tr>
+                        <tr>
+                            <td style="padding: 15px; border: 1px solid #ddd; font-weight: bold;">⑧練習試合の始球セレモニー（フリースロー）</td>
+                            <td style="padding: 15px; border: 1px solid #ddd;">●</td>
+                            <td style="padding: 15px; border: 1px solid #ddd;">●</td>
+                            <td style="padding: 15px; border: 1px solid #ddd;">●</td>
+                            <td style="padding: 15px; border: 1px solid #ddd;">×</td>
+                        </tr>
+                        <tr>
+                            <td style="padding: 15px; border: 1px solid #ddd; font-weight: bold;">⑨選手から3x3公式球の贈呈</td>
+                            <td style="padding: 15px; border: 1px solid #ddd;">●</td>
+                            <td style="padding: 15px; border: 1px solid #ddd;">●</td>
+                            <td style="padding: 15px; border: 1px solid #ddd;">×</td>
+                            <td style="padding: 15px; border: 1px solid #ddd;">×</td>
+                        </tr>
+                        <tr>
+                            <td style="padding: 15px; border: 1px solid #ddd; font-weight: bold;">⑩バスケ教室の開催</td>
+                            <td style="padding: 15px; border: 1px solid #ddd;">●</td>
+                            <td style="padding: 15px; border: 1px solid #ddd;">×</td>
+                            <td style="padding: 15px; border: 1px solid #ddd;">×</td>
+                            <td style="padding: 15px; border: 1px solid #ddd;">×</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            
+            <div class="plans-container">
+                <div class="plan-card">
+                    <div class="plan-header">
+                        <h3 class="plan-title">REGULARスポンサー</h3>
+                        <div class="plan-price">5万円</div>
+                        <div class="plan-period">年間</div>
+                    </div>
+                    <div class="plan-body">
+                        <ul class="plan-features">
+                            <li class="plan-feature">
+                                <i class="fas fa-check"></i>
+                                <span>チームロゴの使用権</span>
+                            </li>
+                            <li class="plan-feature">
+                                <i class="fas fa-check"></i>
+                                <span>SNSでの企業紹介</span>
+                            </li>
+                            <li class="plan-feature">
+                                <i class="fas fa-check"></i>
+                                <span>練習試合でのサンプリング</span>
+                            </li>
+                            <li class="plan-feature">
+                                <i class="fas fa-check"></i>
+                                <span>練習試合の始球セレモニー</span>
+                            </li>
+                        </ul>
+                        <div class="plan-cta">
+                            <a href="#contact" class="plan-btn">お問い合わせ</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="plan-card">
+                    <div class="plan-header">
+                        <h3 class="plan-title">SILVERスポンサー</h3>
+                        <div class="plan-price">30万円</div>
+                        <div class="plan-period">年間</div>
+                    </div>
+                    <div class="plan-body">
+                        <ul class="plan-features">
+                            <li class="plan-feature">
+                                <i class="fas fa-check"></i>
+                                <span>ユニフォームへのロゴ掲載（正面肩）</span>
+                            </li>
+                            <li class="plan-feature">
+                                <i class="fas fa-check"></i>
+                                <span>チームロゴの使用権</span>
+                            </li>
+                            <li class="plan-feature">
+                                <i class="fas fa-check"></i>
+                                <span>SNSでの企業紹介</span>
+                            </li>
+                            <li class="plan-feature">
+                                <i class="fas fa-check"></i>
+                                <span>練習着へのロゴ掲載</span>
+                            </li>
+                            <li class="plan-feature">
+                                <i class="fas fa-check"></i>
+                                <span>チームグッズ贈呈</span>
+                            </li>
+                            <li class="plan-feature">
+                                <i class="fas fa-check"></i>
+                                <span>3x3公式球の贈呈</span>
+                            </li>
+                        </ul>
+                        <div class="plan-cta">
+                            <a href="#contact" class="plan-btn">お問い合わせ</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="plan-card premium-plan">
+                    <div class="plan-header">
+                        <h3 class="plan-title">GOLDスポンサー</h3>
+                        <div class="plan-price">100万円</div>
+                        <div class="plan-period">年間</div>
+                    </div>
+                    <div class="plan-body">
+                        <ul class="plan-features">
+                            <li class="plan-feature">
+                                <i class="fas fa-check"></i>
+                                <span>ユニフォームへのロゴ掲載（正面）</span>
+                            </li>
+                            <li class="plan-feature">
+                                <i class="fas fa-check"></i>
+                                <span>チームフラッグにロゴ掲載</span>
+                            </li>
+                            <li class="plan-feature">
+                                <i class="fas fa-check"></i>
+                                <span>SILVERスポンサーの全特典</span>
+                            </li>
+                            <li class="plan-feature">
+                                <i class="fas fa-check"></i>
+                                <span>バスケットボール教室の開催</span>
+                            </li>
+                            <li class="plan-feature">
+                                <i class="fas fa-check"></i>
+                                <span>対応社数：1社限定</span>
+                            </li>
+                        </ul>
+                        <div class="plan-cta">
+                            <a href="#contact" class="plan-btn">お問い合わせ</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="plan-card">
+                    <div class="plan-header" style="background: linear-gradient(135deg, #90EE90, #32CD32);">
+                        <h3 class="plan-title">SUPPLIERスポンサー</h3>
+                        <div class="plan-price">物品提供</div>
+                        <div class="plan-period">商品/サービス</div>
+                    </div>
+                    <div class="plan-body">
+                        <ul class="plan-features">
+                            <li class="plan-feature">
+                                <i class="fas fa-check"></i>
+                                <span>チームロゴの使用権</span>
+                            </li>
+                            <li class="plan-feature">
+                                <i class="fas fa-check"></i>
+                                <span>SNSでの企業・製品紹介</span>
+                            </li>
+                            <li class="plan-feature">
+                                <i class="fas fa-check"></i>
+                                <span>練習試合でのサンプリング</span>
+                            </li>
+                            <li class="plan-feature">
+                                <i class="fas fa-check"></i>
+                                <span>提供物品による特典アレンジ可能</span>
+                            </li>
+                        </ul>
+                        <div class="plan-cta">
+                            <a href="#contact" class="plan-btn" style="background: linear-gradient(135deg, #90EE90, #32CD32);">お問い合わせ</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- コンタクトセクション -->
+    <section class="contact" id="contact">
+        <div class="container">
+            <div class="section-heading">
+                <h2 class="section-title">お問い合わせ</h2>
+                <p class="section-subtitle">スポンサーに関するお問い合わせは、以下のフォームまたは直接メールにてご連絡ください</p>
+            </div>
+            <div class="contact-container">
+                <div class="contact-info">
+                    <h3 class="contact-title">連絡先情報</h3>
+                    <ul class="contact-details">
+                        <li class="contact-item">
+                            <i class="fas fa-envelope"></i>
+                            <span>kaneko@givers.co.jp</span>
+                        </li>
+                        <li class="contact-item">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span>東京都新宿区新宿6丁目28番7号<br>新宿EASTCOURT8階</span>
+                        </li>
+                        <li class="contact-item">
+                            <i class="fas fa-user"></i>
+                            <span>担当：兼子 勇太（GM/監督）</span>
+                        </li>
+                    </ul>
+                </div>
+                <div class="contact-form-container">
+                    <h3 class="form-title">お問い合わせフォーム</h3>
+                    <p class="form-subtitle">以下のフォームからお気軽にお問い合わせください</p>
+                    <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSdHoAy8YaIe3CeEtRLtY5anxw9hdOfFOY1DG7vuwUceQxooNg/viewform?embedded=true" width="100%" height="1538" frameborder="0" marginheight="0" marginwidth="0">読み込んでいます…</iframe>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- フッター -->
+    <footer>
+        <div class="container">
+            <div class="footer-container">
+                <div class="footer-column">
+                    <a href="index.html" class="footer-logo">
+                        <img src="img/SHINJYUKUgivers_textlogoA_ck.png" alt="新宿givers" class="footer-logo-image">
+                    </a>
+                    <p class="footer-text">新宿から世界へ、バスケットボールの力で人々に愛を</p>
+                    <div class="footer-social">
+                        <a href="https://www.instagram.com/shinjukugivers/"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                <div class="footer-column">
+                    <h3>リンク</h3>
+                    <ul class="footer-links">
+                        <li class="footer-link"><a href="index.html">ホーム</a></li>
+                        <li class="footer-link"><a href="members.html">メンバー</a></li>
+                        <li class="footer-link"><a href="schedule.html">スケジュール</a></li>
+                        <li class="footer-link"><a href="sponsors.html">スポンサー</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>お問い合わせ</h3>
+                    <ul class="footer-links">
+                        <li class="footer-link"><i class="fas fa-envelope"></i> kaneko@givers.co.jp</li>
+                        <li class="footer-link"><i class="fas fa-map-marker-alt"></i> 東京都新宿区新宿6丁目28番7号<br>新宿EASTCOURT8階</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 新宿givers All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+    
+    <!-- JavaScript -->
+    <script>
+        // ハンバーガーメニュー切り替え
+        document.addEventListener('DOMContentLoaded', function() {
+            const hamburger = document.querySelector('.hamburger');
+            const navMenu = document.querySelector('.nav-menu');
+            
+            hamburger.addEventListener('click', function() {
+                navMenu.classList.toggle('active');
+            });
+        });
+    </script>
+</body>
+</html>
