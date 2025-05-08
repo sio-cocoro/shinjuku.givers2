@@ -1617,7 +1617,7 @@ img {
 /* レスポンシブ画像 */
 @media screen and (max-width: 768px) {
     .member-image {
-        height: 350px;
+        height: 400px;
     }
     
     .coach-image {
