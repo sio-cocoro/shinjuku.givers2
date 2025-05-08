@@ -3,666 +3,32 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>新宿givers | 公式サイト</title>
+    <title>新宿GIVERS | 公式サイト</title>
+    <!-- リセットCSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css">
+    <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <style>
-        :root {
-            --turquoise: #40E0D0;
-            --gold: #FFD700;
-            --dark: #333;
-            --light: #f8f9fa;
-            --gradient: linear-gradient(135deg, #40E0D0, #20B2AA);
-        }
-        
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        }
-        
-        body {
-            background-color: var(--light);
-            color: var(--dark);
-            line-height: 1.6;
-        }
-        .logo-image {
-    height: 40px; /* ロゴの高さを調整 */
-    width: auto; /* 幅は自動調整 */
-    display: block;
-}
-        /* ナビゲーション */
-        .navbar {
-            background-color: rgba(255, 255, 255, 0.95);
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-            position: fixed;
-            width: 100%;
-            top: 0;
-            z-index: 1000;
-            padding: 15px 0;
-            transition: all 0.3s ease;
-        }
-        
-        .container {
-            width: 90%;
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 15px;
-        }
-        
-        .nav-container {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-        
-        .logo {
-            font-size: 2rem;
-            font-weight: bold;
-            color: var(--turquoise);
-            text-decoration: none;
-            display: flex;
-            align-items: center;
-        }
-        
-        .logo span {
-            color: var(--gold);
-        }
-        
-        .nav-menu {
-            display: flex;
-            list-style: none;
-        }
-        
-        .nav-item {
-            margin: 0 15px;
-        }
-        
-        .nav-link {
-            color: var(--dark);
-            text-decoration: none;
-            font-weight: 500;
-            transition: color 0.3s ease;
-            position: relative;
-            padding: 5px 0;
-        }
-        
-        .nav-link:after {
-            content: '';
-            position: absolute;
-            width: 0;
-            height: 2px;
-            bottom: 0;
-            left: 0;
-            background-color: var(--turquoise);
-            transition: width 0.3s ease;
-        }
-        
-        .nav-link:hover {
-            color: var(--turquoise);
-        }
-        
-        .nav-link:hover:after {
-            width: 100%;
-        }
-        
-        .hamburger {
-            display: none;
-            cursor: pointer;
-        }
-        
-        /* ヒーローセクション */
-        .hero {
-            position: relative;
-            height: 100vh;
-            width: 100%;
-            overflow: hidden;
-            padding-top: 80px;
-        }
-        
-        .carousel {
-    height: 100%;
-    width: 300%;
-    display: flex;
-    transition: transform 0.6s ease-in-out;
-}
-        
-        .carousel-item {
-            width: 33.333%;
-            height: 100%;
-            position: relative;
-            background-size: cover;
-            background-position: center;
-        }
-        
-        .carousel-item:nth-child(1) {
-    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('img/bailey-burton-o5UlVmTwVz8-unsplash.jpg');
-}
-
-.carousel-item:nth-child(2) {
-    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('img/logan-weaver-lgnwvr-xtPs2_MlPYc-unsplash.jpg');
-}
-
-.carousel-item:nth-child(3) {
-    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('img/tom-briskey-AddAnDkkovM-unsplash.jpg');
-}
-        
-        .carousel-content {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            text-align: center;
-            color: #fff;
-            width: 80%;
-            max-width: 800px;
-            opacity: 0;
-            animation: fadeIn 1s forwards;
-        }
-        
-        @keyframes fadeIn {
-            0% {
-                opacity: 0;
-                transform: translate(-50%, -40%);
-            }
-            100% {
-                opacity: 1;
-                transform: translate(-50%, -50%);
-            }
-        }
-        
-        .carousel-heading {
-            font-size: 3rem;
-            margin-bottom: 20px;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
-        }
-        
-        .carousel-subheading {
-            font-size: 1.5rem;
-            margin-bottom: 30px;
-            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
-        }
-        
-        .cta-container {
-            display: flex;
-            justify-content: center;
-            gap: 20px;
-            flex-wrap: wrap;
-        }
-        
-        .cta-btn {
-            padding: 12px 25px;
-            border-radius: 30px;
-            text-decoration: none;
-            font-weight: bold;
-            transition: all 0.3s ease;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-        
-        .primary-btn {
-            background: var(--gradient);
-            color: white;
-            border: 2px solid var(--turquoise);
-        }
-        
-        .primary-btn:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 20px rgba(64, 224, 208, 0.3);
-        }
-        
-        .secondary-btn {
-            background-color: rgba(255, 255, 255, 0.1);
-            color: var(--gold);
-            border: 2px solid var(--gold);
-        }
-        
-        .secondary-btn:hover {
-            background-color: var(--gold);
-            color: var(--dark);
-            transform: translateY(-5px);
-            box-shadow: 0 10px 20px rgba(255, 215, 0, 0.3);
-        }
-        
-        .carousel-indicators {
-            position: absolute;
-            bottom: 40px;
-            left: 50%;
-            transform: translateX(-50%);
-            display: flex;
-            gap: 10px;
-        }
-        
-        .indicator {
-            width: 12px;
-            height: 12px;
-            border-radius: 50%;
-            background-color: rgba(255, 255, 255, 0.5);
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-        
-        .indicator.active {
-            background-color: var(--turquoise);
-            transform: scale(1.2);
-        }
-        
-        /* セクション共通スタイル */
-        section {
-            padding: 80px 0;
-        }
-        
-        .section-heading {
-            text-align: center;
-            margin-bottom: 50px;
-            position: relative;
-        }
-        
-        .section-title {
-            font-size: 2.5rem;
-            color: var(--dark);
-            margin-bottom: 15px;
-            position: relative;
-            display: inline-block;
-        }
-        
-        .section-title:after {
-            content: '';
-            position: absolute;
-            width: 50%;
-            height: 3px;
-            background: var(--gradient);
-            bottom: -5px;
-            left: 25%;
-        }
-        
-        .section-subtitle {
-            font-size: 1.2rem;
-            color: #777;
-            max-width: 600px;
-            margin: 0 auto;
-        }
-        
-        /* チーム紹介セクション */
-        .team-intro {
-            background-color: white;
-        }
-        
-        /* チーム紹介セクションの新しいスタイル */
-        .about-section {
-            margin-bottom: 50px;
-            border-bottom: 1px solid #eee;
-            padding-bottom: 40px;
-        }
-        
-        .about-section:last-child {
-            border-bottom: none;
-        }
-        
-        .about-title {
-            font-size: 2rem;
-            color: var(--turquoise);
-            margin-bottom: 25px;
-            position: relative;
-            padding-left: 20px;
-            display: inline-block;
-        }
-        
-        .about-title:before {
-            content: '';
-            position: absolute;
-            left: 0;
-            top: 50%;
-            transform: translateY(-50%);
-            width: 8px;
-            height: 30px;
-            background-color: var(--turquoise);
-            border-radius: 4px;
-        }
-        
-        .about-content {
-            display: flex;
-            align-items: flex-start;
-            gap: 40px;
-        }
-        
-        .about-text {
-            flex: 1;
-            color: #444;
-            font-size: 1.05rem;
-            line-height: 1.8;
-        }
-        
-        .about-vision {
-            font-size: 1.3rem;
-            font-weight: bold;
-            color: var(--dark);
-            margin-bottom: 15px;
-            font-style: italic;
-            border-left: 3px solid var(--gold);
-            padding-left: 15px;
-        }
-        
-        /* 次回試合情報 */
-        .next-match {
-            background-color: #f0f9fa;
-            text-align: center;
-        }
-        
-        .match-card {
-            background-color: white;
-            border-radius: 10px;
-            padding: 30px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
-            max-width: 800px;
-            margin: 0 auto;
-        }
-        
-        .match-date {
-            font-size: 1.8rem;
-            font-weight: bold;
-            color: var(--turquoise);
-            margin-bottom: 15px;
-        }
-        
-        .match-location {
-            font-size: 1.2rem;
-            margin-bottom: 20px;
-            color: #666;
-        }
-        
-        .match-schedule-link {
-            display: inline-block;
-            color: var(--turquoise);
-            text-decoration: none;
-            font-weight: bold;
-            margin-top: 20px;
-            transition: all 0.3s ease;
-        }
-        
-        .match-schedule-link:hover {
-            color: var(--gold);
-            transform: translateX(5px);
-        }
-        
-        /* SNS・グッズセクション */
-        .social-shop {
-            background-color: white;
-        }
-        
-        .social-shop-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
-        }
-        
-        .social-card, .shop-card {
-            background: white;
-            border-radius: 10px;
-            padding: 30px;
-            text-align: center;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
-            transition: all 0.3s ease;
-        }
-        
-        .social-card:hover, .shop-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
-        }
-        
-        .social-icon {
-            font-size: 3rem;
-            color: var(--turquoise);
-            margin-bottom: 20px;
-        }
-        
-        .social-title, .shop-title {
-            font-size: 1.8rem;
-            margin-bottom: 15px;
-            color: var(--dark);
-        }
-        
-        .social-text, .shop-text {
-            color: #666;
-            margin-bottom: 20px;
-        }
-        
-        .shop-image {
-            height: 200px;
-            width: 100%;
-            object-fit: cover;
-            border-radius: 5px;
-            margin-bottom: 20px;
-        }
-        
-        /* スポンサーCTA */
-        .sponsor-cta {
-            background: var(--gradient);
-            color: white;
-            text-align: center;
-        }
-        
-        .sponsor-cta-content {
-            max-width: 700px;
-            margin: 0 auto;
-        }
-        
-        .sponsor-title {
-            font-size: 2.5rem;
-            margin-bottom: 20px;
-        }
-        
-        .sponsor-text {
-            margin-bottom: 30px;
-            font-size: 1.2rem;
-        }
-        
-        .sponsor-btn {
-            background-color: var(--gold);
-            color: var(--dark);
-            padding: 15px 30px;
-            border-radius: 30px;
-            text-decoration: none;
-            font-weight: bold;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            display: inline-block;
-            transition: all 0.3s ease;
-        }
-        
-        .sponsor-btn:hover {
-            background-color: white;
-            transform: translateY(-5px);
-            box-shadow: 0 10px 20px rgba(255, 255, 255, 0.3);
-        }
-        
-        /* フッター */
-        footer {
-            background-color: var(--dark);
-            color: white;
-            padding: 60px 0 30px;
-        }
-        
-        .footer-logo-image {
-    height: 35px; /* フッターロゴの高さを調整 */
-    width: auto;
-    display: block;
-}
-
-        .footer-container {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 40px;
-        }
-        
-        .footer-logo {
-            font-size: 1.8rem;
-            font-weight: bold;
-            color: var(--turquoise);
-            margin-bottom: 20px;
-            display: inline-block;
-        }
-        
-        .footer-logo span {
-            color: var(--gold);
-        }
-        
-        .footer-text {
-            margin-bottom: 20px;
-            color: #bbb;
-        }
-        
-        .footer-column h3 {
-            font-size: 1.5rem;
-            margin-bottom: 20px;
-            position: relative;
-            padding-bottom: 10px;
-        }
-        
-        .footer-column h3:after {
-            content: '';
-            position: absolute;
-            width: 40px;
-            height: 3px;
-            background: var(--turquoise);
-            bottom: 0;
-            left: 0;
-        }
-        
-        .footer-links {
-            list-style: none;
-        }
-        
-        .footer-link {
-            margin-bottom: 15px;
-        }
-        
-        .footer-link a {
-            color: #bbb;
-            text-decoration: none;
-            transition: color 0.3s ease;
-        }
-        
-        .footer-link a:hover {
-            color: var(--turquoise);
-        }
-        
-        .footer-social {
-            display: flex;
-            gap: 15px;
-            margin-top: 20px;
-        }
-        
-        .footer-social a {
-            color: white;
-            background-color: rgba(255, 255, 255, 0.1);
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: all 0.3s ease;
-        }
-        
-        .footer-social a:hover {
-            background-color: var(--turquoise);
-            transform: translateY(-5px);
-        }
-        
-        .footer-bottom {
-            text-align: center;
-            padding-top: 30px;
-            margin-top: 30px;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-            color: #999;
-        }
-        
-        /* レスポンシブデザイン */
-        @media (max-width: 991px) {
-            .carousel-heading {
-                font-size: 2.5rem;
-            }
-            
-            .carousel-subheading {
-                font-size: 1.2rem;
-            }
-        }
-        
-        @media (max-width: 768px) {
-            .nav-menu {
-                position: fixed;
-                top: 80px;
-                right: -100%;
-                background-color: white;
-                flex-direction: column;
-                width: 80%;
-                height: calc(100vh - 80px);
-                transition: all 0.5s ease;
-                box-shadow: -5px 0 15px rgba(0, 0, 0, 0.1);
-                padding: 20px 0;
-                align-items: center;
-            }
-            
-            .nav-menu.active {
-                right: 0;
-            }
-            
-            .nav-item {
-                margin: 15px 0;
-            }
-            
-            .hamburger {
-                display: block;
-                font-size: 1.8rem;
-                color: var(--turquoise);
-            }
-            
-            .carousel-heading {
-                font-size: 2rem;
-            }
-            
-            .carousel-subheading {
-                font-size: 1rem;
-            }
-            
-            .cta-container {
-                flex-direction: column;
-                gap: 15px;
-            }
-            
-            .section-title {
-                font-size: 2rem;
-            }
-        }
-        
-        @media (max-width: 576px) {
-            .carousel-heading {
-                font-size: 1.5rem;
-            }
-            
-            .section-title {
-                font-size: 1.8rem;
-            }
-        }
-    </style>
+    <!-- 独自スタイル -->
+    <link rel="stylesheet" href="css/style.css">
+    <!-- JavaScript -->
+    <script src="js/script.js" defer></script>
 </head>
 <body>
     <!-- ナビゲーション -->
     <header class="navbar">
         <div class="container nav-container">
-            <a href="#" class="logo">
-                <img src="img/SHINJYUKUgivers_textlogoA_ck.png" alt="新宿givers" class="logo-image">
+            <a href="index.html" class="logo">
+                <img src="img/SHINJYUKUgivers_textlogoA_ck.png" alt="新宿GIVERS" class="logo-image">
             </a>
             <ul class="nav-menu">
-                <li class="nav-item"><a href="#" class="nav-link">ホーム</a></li>
+                <li class="nav-item"><a href="index.html" class="nav-link">ホーム</a></li>
                 <li class="nav-item"><a href="members.html" class="nav-link">メンバー</a></li>
                 <li class="nav-item"><a href="schedule.html" class="nav-link">スケジュール</a></li>
                 <li class="nav-item"><a href="sponsors.html" class="nav-link">スポンサー</a></li>
             </ul>
             <div class="hamburger">
                 <i class="fas fa-bars"></i>
-            </div>
+              </div>
         </div>
     </header>
     
@@ -672,11 +38,9 @@
             <div class="carousel-item">
                 <div class="carousel-content">
                     <h1 class="carousel-heading">新宿から世界へ、バスケットボールの力で人々に愛を</h1>
-                    <p class="carousel-subheading">新宿giversは3人制バスケットボールチームとして、感動と活力を届けます</p>
+                    <p class="carousel-subheading">新宿GIVERSは3人制バスケットボールチームとして、感動と活力を届けます</p>
                     <div class="cta-container">
-                        <a href="#" class="cta-btn primary-btn">チームを応援する</a>
                         <a href="sponsors.html" class="cta-btn secondary-btn">スポンサーになる</a>
-                        <a href="#" class="cta-btn secondary-btn">グッズを見る</a>
                     </div>
                 </div>
             </div>
@@ -686,17 +50,16 @@
                     <p class="carousel-subheading">熱い戦いをぜひ会場で応援してください</p>
                     <div class="cta-container">
                         <a href="schedule.html" class="cta-btn primary-btn">試合スケジュールを見る</a>
-                        <a href="#" class="cta-btn secondary-btn">チケットを購入する</a>
                     </div>
                 </div>
             </div>
             <div class="carousel-item">
                 <div class="carousel-content">
-                    <h1 class="carousel-heading">新宿giversのメンバー</h1>
+                    <h1 class="carousel-heading">新宿GIVERSのメンバー</h1>
                     <p class="carousel-subheading">情熱を持った選手たちが集結しています</p>
                     <div class="cta-container">
                         <a href="members.html" class="cta-btn primary-btn">メンバーを見る</a>
-                        <a href="https://www.instagram.com/shinjukugivers/" class="cta-btn secondary-btn">Instagramをフォロー</a>
+                        <a href="https://www.instagram.com/givers3x3?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" class="cta-btn secondary-btn">Instagramをフォロー</a>
                     </div>
                 </div>
             </div>
@@ -713,7 +76,7 @@
         <div class="container">
             <div class="section-heading">
                 <h2 class="section-title">チーム紹介</h2>
-                <p class="section-subtitle">新宿giversは、バスケットボールを通じて地域と共に成長するチームです</p>
+                <p class="section-subtitle">新宿GIVERSは、バスケットボールを通じて地域と共に成長するチームです</p>
             </div>
             
             <!-- 設立背景 -->
@@ -721,7 +84,7 @@
                 <h3 class="about-title">新宿GIVERSとは</h3>
                 <div class="about-content">
                     <div class="about-text">
-                        <p>新宿giversは、株式会社giversによって2025年1月に設立されました。3人制バスケットボールの魅力を広め、地域コミュニティとともに成長することを目指し、情熱を持った選手達とスタッフが集結しました。新宿の活気ある地域とともに、挑戦し続けるチームになります。</p>
+                        <p>新宿GIVERSは、株式会社giversによって2025年1月に設立されました。3人制バスケットボールの魅力を広め、地域コミュニティとともに成長することを目指し、情熱を持った選手達とスタッフが集結しました。新宿の活気ある地域とともに、挑戦し続けるチームになります。</p>
                     </div>
                 </div>
             </div>
@@ -732,7 +95,7 @@
                 <div class="about-content">
                     <div class="about-text">
                         <p class="about-vision">「新宿から世界へ、バスケットボールの力で人々に愛を」</p>
-                        <p>新宿giversは地域社会との連携を深めながら、3人制バスケットボールの強化、普及、育成に努めます。我々は、バスケットボールを通じて多くの企業や個人を巻き込み愛に溢れる社会を築きます。</p>
+                        <p>新宿GIVERSは地域社会との連携を深めながら、3人制バスケットボールの強化、普及、育成に努めます。我々は、バスケットボールを通じて多くの企業や個人を巻き込み愛に溢れる社会を築きます。</p>
                     </div>
                 </div>
             </div>
@@ -772,13 +135,13 @@
                     <i class="fab fa-instagram social-icon"></i>
                     <h3 class="social-title">Instagram</h3>
                     <p class="social-text">選手の活動やチームの最新情報を発信中！</p>
-                    <a href="https://www.instagram.com/shinjukugivers/" class="cta-btn primary-btn">フォローする</a>
+                    <a href="https://www.instagram.com/givers3x3?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" class="cta-btn primary-btn">フォローする</a>
                 </div>
                 <div class="shop-card">
                     <img src="img/1a90ec1d-3ab2-4bd2-b186-97d7c6905d44.jpg" alt="グッズイメージ" class="shop-image">
                     <h3 class="shop-title">オフィシャルグッズ</h3>
-                    <p class="shop-text">新宿giversオリジナルグッズで応援しよう！</p>
-                    <a href="#" class="cta-btn primary-btn">グッズを見る</a>
+                    <p class="shop-text">新宿GIVERSオリジナルグッズで応援しよう！</p>
+                    <a href="#" class="cta-btn primary-btn">comming soon</a>
                 </div>
             </div>
         </div>
@@ -789,7 +152,7 @@
         <div class="container">
             <div class="sponsor-cta-content">
                 <h2 class="sponsor-title">スポンサー募集中</h2>
-                <p class="sponsor-text">新宿giversと一緒に、バスケットボールの魅力を広めませんか？<br>様々なスポンサープランをご用意しております。</p>
+                <p class="sponsor-text">新宿GIVERSと一緒に、バスケットボールの魅力を広めませんか？<br>様々なスポンサープランをご用意しております。</p>
                 <a href="sponsors.html" class="sponsor-btn">詳細を見る</a>
             </div>
         </div>
@@ -800,21 +163,21 @@
         <div class="container">
             <div class="footer-container">
                 <div class="footer-column">
-                    <a href="#" class="footer-logo">
-                        <img src="img/SHINJYUKUgivers_textlogoA_ck.png" alt="新宿givers" class="footer-logo-image">
+                    <a href="index.html" class="footer-logo">
+                        <img src="img/SHINJYUKUgivers_textlogoA_ck.png" alt="新宿GIVERS" class="footer-logo-image">
                     </a>
                     <p class="footer-text">新宿から世界へ、バスケットボールの力で人々に愛を</p>
                     <div class="footer-social">
-                        <a href="https://www.instagram.com/shinjukugivers/"><i class="fab fa-instagram"></i></a>
-                        <a href="#"><i class="fab fa-twitter"></i></a>
-                        <a href="#"><i class="fab fa-facebook-f"></i></a>
-                        <a href="#"><i class="fab fa-youtube"></i></a>
+                        <a href="https://www.instagram.com/givers3x3?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                        <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
                     </div>
                 </div>
                 <div class="footer-column">
                     <h3>リンク</h3>
                     <ul class="footer-links">
-                        <li class="footer-link"><a href="#">ホーム</a></li>
+                        <li class="footer-link"><a href="index.html">ホーム</a></li>
                         <li class="footer-link"><a href="members.html">メンバー</a></li>
                         <li class="footer-link"><a href="schedule.html">スケジュール</a></li>
                         <li class="footer-link"><a href="sponsors.html">スポンサー</a></li>
@@ -829,58 +192,10 @@
                 </div>
             </div>
             <div class="footer-bottom">
-                <p>&copy; 2025 新宿givers All Rights Reserved.</p>
+                <p>&copy; 2025 新宿GIVERS All Rights Reserved.</p>
             </div>
         </div>
     </footer>
     
-    <!-- JavaScript -->
-    <script>
-        // ハンバーガーメニュー切り替え
-        document.addEventListener('DOMContentLoaded', function() {
-    // ハンバーガーメニュー切り替え
-    const hamburger = document.querySelector('.hamburger');
-    const navMenu = document.querySelector('.nav-menu');
-    
-    hamburger.addEventListener('click', function() {
-        navMenu.classList.toggle('active');
-    });
-    
-    // カルーセル
-    const carousel = document.querySelector('.carousel');
-    const indicators = document.querySelectorAll('.indicator');
-    let currentIndex = 0;
-    
-    // カルーセルの初期状態を設定
-    updateCarousel();
-    
-    // 自動スライド
-    setInterval(function() {
-        currentIndex = (currentIndex + 1) % 3;
-        updateCarousel();
-    }, 5000);
-    
-    // インジケーターのクリックイベント
-    indicators.forEach((indicator, index) => {
-        indicator.addEventListener('click', function() {
-            currentIndex = index;
-            updateCarousel();
-        });
-    });
-    
-    function updateCarousel() {
-        carousel.style.transform = `translateX(-${currentIndex * 33.333}%)`;
-        
-        // インジケーターの更新
-        indicators.forEach((indicator, index) => {
-            if (index === currentIndex) {
-                indicator.classList.add('active');
-            } else {
-                indicator.classList.remove('active');
-            }
-        });
-    }
-});
-</script>
 </body>
 </html>
