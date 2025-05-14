@@ -263,3 +263,30 @@ document.addEventListener('DOMContentLoaded', function() {
       });
     }
   });
+
+  // ========================================
+// ページトップに戻るボタン
+// ========================================
+document.addEventListener('DOMContentLoaded', function() {
+  const backToTopButton = document.querySelector('.back-to-top');
+  
+  if (backToTopButton) {
+    // スクロール時の表示/非表示
+    window.addEventListener('scroll', function() {
+      if (window.pageYOffset > 300) {
+        backToTopButton.classList.add('show');
+      } else {
+        backToTopButton.classList.remove('show');
+      }
+    });
+    
+    // クリック時の動作
+    backToTopButton.addEventListener('click', function(e) {
+      e.preventDefault();
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+      });
+    });
+  }
+});

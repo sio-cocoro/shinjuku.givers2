@@ -1,0 +1,21 @@
+{
+    "name": "新宿GIVERS",
+    "short_name": "GIVERS",
+    "description": "新宿GIVERSは3人制バスケットボールを通じて地域社会に貢献するチームです",
+    "start_url": "/",
+    "display": "standalone",
+    "background_color": "#ffffff",
+    "theme_color": "#40E0D0",
+    "icons": [
+      {
+        "src": "img/favicon-192x192.png",
+        "sizes": "192x192",
+        "type": "image/png"
+      },
+      {
+        "src": "img/favicon-512x512.png",
+        "sizes": "512x512",
+        "type": "image/png"
+      }
+    ]
+  }

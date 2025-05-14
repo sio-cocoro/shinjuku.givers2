@@ -1625,3 +1625,267 @@ img {
         max-width: 250px;
     }
 }
+
+/* 新しく追加するスタイル */
+
+/* ページトップに戻るボタン */
+.back-to-top {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    width: 50px;
+    height: 50px;
+    background-color: var(--turquoise);
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    opacity: 0;
+    visibility: hidden;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
+    z-index: 99;
+}
+
+.back-to-top.show {
+    opacity: 1;
+    visibility: visible;
+}
+
+.back-to-top:hover {
+    background-color: var(--gold);
+    transform: translateY(-5px);
+}
+
+/* ニュースセクション */
+.news-section {
+    background-color: white;
+    padding: 80px 0;
+}
+
+.news-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+    gap: 30px;
+    margin-bottom: 50px;
+}
+
+.news-card {
+    background-color: white;
+    border-radius: var(--border-radius);
+    overflow: hidden;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.08);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.news-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+}
+
+.news-image-container {
+    position: relative;
+}
+
+.news-image {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+
+.news-date {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    background-color: var(--turquoise);
+    color: white;
+    padding: 5px 15px;
+    font-weight: bold;
+    font-size: 0.85rem;
+}
+
+.news-content {
+    padding: 20px;
+}
+
+.news-title {
+    font-size: 1.3rem;
+    margin-bottom: 10px;
+    color: var(--dark);
+    font-weight: bold;
+}
+
+.news-excerpt {
+    color: #666;
+    margin-bottom: 15px;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.news-link {
+    color: var(--turquoise);
+    text-decoration: none;
+    font-weight: bold;
+    display: inline-block;
+    transition: all 0.3s ease;
+}
+
+.news-link:hover {
+    color: var(--gold);
+    transform: translateX(5px);
+}
+
+.news-more-link {
+    text-align: center;
+}
+
+/* 次回試合情報の改善 */
+.match-time {
+    font-size: 1.2rem;
+    margin: 10px 0;
+    color: #333;
+}
+
+.match-cta {
+    margin: 20px 0;
+}
+
+/* アクセシビリティ改善 */
+.nav-link[aria-current="page"] {
+    color: var(--turquoise);
+    font-weight: bold;
+}
+
+.nav-link[aria-current="page"]:after {
+    width: 100%;
+}
+
+/* ハンバーガーメニュー改善 */
+.hamburger {
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+/* レスポンシブ対応追加 */
+@media screen and (max-width: 768px) {
+    .news-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .back-to-top {
+        bottom: 20px;
+        right: 20px;
+        width: 40px;
+        height: 40px;
+    }
+}
+
+/* パンくずリスト */
+.breadcrumb {
+    background-color: #f8f8f8;
+    padding: 110px 0 15px;
+    font-size: 0.9rem;
+}
+
+.breadcrumb-list {
+    display: flex;
+    flex-wrap: wrap;
+    list-style: none;
+}
+
+.breadcrumb-item {
+    display: flex;
+    align-items: center;
+    color: #777;
+}
+
+.breadcrumb-item:not(:last-child)::after {
+    content: '/';
+    margin: 0 8px;
+    color: #ccc;
+}
+
+.breadcrumb-item a {
+    color: #555;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.breadcrumb-item a:hover {
+    color: var(--turquoise);
+}
+
+.breadcrumb-item.current {
+    color: var(--turquoise);
+    font-weight: 500;
+}
+
+/* プライバシーポリシーページ */
+.privacy-section {
+    padding: 60px 0 80px;
+    background-color: white;
+}
+
+.content-block {
+    max-width: 800px;
+    margin: 0 auto 40px;
+}
+
+.content-block:last-of-type {
+    margin-bottom: 60px;
+}
+
+.content-block h2 {
+    font-size: 1.6rem;
+    color: var(--turquoise);
+    margin-bottom: 20px;
+    border-bottom: 2px solid #f0f0f0;
+    padding-bottom: 10px;
+}
+
+.content-block p, .content-block ul {
+    line-height: 1.8;
+    color: #444;
+    margin-bottom: 15px;
+}
+
+.content-block ul {
+    padding-left: 20px;
+    list-style-type: disc;
+}
+
+.content-block ul li {
+    margin-bottom: 10px;
+}
+
+/* ホームに戻るボタン */
+.back-to-home {
+    text-align: center;
+    margin-top: 60px;
+}
+
+.back-to-home .cta-btn {
+    padding: 15px 30px;
+    font-size: 1.1rem;
+}
+
+/* モバイル対応 */
+@media screen and (max-width: 768px) {
+    .breadcrumb {
+        padding: 100px 0 10px;
+        font-size: 0.8rem;
+    }
+    
+    .content-block {
+        padding: 0 20px;
+    }
+    
+    .content-block h2 {
+        font-size: 1.4rem;
+    }
+}
